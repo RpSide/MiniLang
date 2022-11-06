@@ -1,0 +1,66 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
+
+func main() {
+
+	file := ReadByLine("Test.mini")
+
+	for line, v := range file {
+
+		var function string
+		var M string
+		var Pstring []string
+		var Fstring []string
+		var Vstring []string
+
+		var param string
+
+		for column, v2 := range strings.Split(v, "") {
+			var VarVal string
+
+			if v2 == "(" && M != "param" {
+
+				M = "param"
+
+			}
+			if v2 == "-" && M == "param" {
+
+				M = "var"
+
+			}
+			if v2 == "-" && M == "var" {
+
+				VarVal = strings.Split(strings.Join(variables, ""), ",")[sort.StringSlice(strings.Split(strings.Join(variables, ""), ",")).Search(strings.Join(Vstring, ""))+1]
+
+				fmt.Println(strings.Join(Vstring, ""))
+				// PrintLnBlue(VarVal)
+				Pstring = append(Pstring, VarVal)
+				M = "param"
+
+			}
+			if M == "param" && v2 != ")" && v2 != "(" && M != "var" {
+				Pstring = append(Pstring, v2)
+			}
+			if M == "var" && v2 != "-" && v2 != "_" && v2 != ")" && v2 != "(" {
+				Vstring = append(Vstring, v2)
+			}
+			if M == "param" && v2 == ")" {
+				param = strings.ReplaceAll(strings.ReplaceAll(strings.Join(Pstring, ""), `"`, ""), "-"+strings.Split(strings.Join(variables, ""), ",")[sort.StringSlice(strings.Split(strings.Join(variables, ""), ",")).Search(strings.Join(Vstring, ""))]+"_", "")
+				function = strings.Join(Fstring, "")
+
+				ProcessFunction(function, param, line, column)
+
+			}
+			if M != "param" {
+				Fstring = append(Fstring, v2)
+			}
+
+		}
+
+	}
+}

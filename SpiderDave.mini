@@ -1,0 +1,3 @@
+Var(Test1, Hi)
+Var(Test2, Hey)
+Var("VarT", "BirthDay")
