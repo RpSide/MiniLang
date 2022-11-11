@@ -1,15 +1,9 @@
 package main
 
 import (
+	"os"
 	"strings"
 )
-
-func RemoveFirstChar(input string) string {
-	if len(input) <= 1 {
-		return ""
-	}
-	return input[1:]
-}
 
 func MinilangInstancev2(filename string) {
 
@@ -85,6 +79,16 @@ func MinilangInstancev2(filename string) {
 
 func main() {
 
-	MinilangInstancev2("New.mini")
+	if len(os.Args) == 2 {
+		MinilangInstancev2(os.Args[1])
+	} else {
+		SpitConsoleError("*.mini | file not Specified")
+	}
 
+}
+
+//export RUN_MINILANG
+func RUN_MINILANG(file string) {
+
+	MinilangInstancev2(file)
 }

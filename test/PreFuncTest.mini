@@ -1,0 +1,9 @@
+EvalExpressions("6*6*6")
+
+PreFunc(E1, log{1 hi})
+PreFunc(E2, log{2 hi})
+PreFunc(E3, log{3 hi})
+
+E1()
+E2()
+E3()

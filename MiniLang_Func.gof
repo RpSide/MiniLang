@@ -1,0 +1,36 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+	"os"
+)
+
+var Variables = make(map[string]string)
+var PreFunc = make(map[string]string)
+
+func Error(params ...string) {
+
+	PrintLnRed(strings.Join(params, ""))
+
+}
+
+func Print(params ...string) {
+
+	fmt.Println(strings.Join(params, ""))
+
+}
+
+func Log(params ...string) {
+
+	WriteFile("Log.txt", "Log")
+	fmt.Println(strings.Join(params, ""))
+
+}
+
+func SpitError(line, column int, err string) {
+
+	Error(fmt.Sprintf(`Line: %d Column: %d | %s`, line+1, column+1, err))
+	os.Exit(1)
+
+}

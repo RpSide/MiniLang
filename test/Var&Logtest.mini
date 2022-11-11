@@ -1,0 +1,7 @@
+Var(Test1, Hi)
+Var(Test2, Hey)
+Var("VarT", "BirthDay")
+
+log(-Test1_)
+log_error(-Test2_)
+log(Happy -VarT_)
