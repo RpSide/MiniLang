@@ -1,4 +1,4 @@
-module minilang
+module MiniLang
 
 go 1.19
 

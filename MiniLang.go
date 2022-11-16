@@ -86,9 +86,3 @@ func main() {
 	}
 
 }
-
-//export RUN_MINILANG
-func RUN_MINILANG(file string) {
-
-	MinilangInstancev2(file)
-}
